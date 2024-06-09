@@ -13,13 +13,13 @@ class ImageController extends Controller
     {
         // Validate the incoming request
         $request->validate([
-            'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
         // dd($request);
 
         // Get the uploaded file
-        $file = $request->file('img');
+        $file = $request->file('file');
 
         // Get the format
         $format = $request->input('format');
@@ -42,8 +42,8 @@ class ImageController extends Controller
         $imageUrl = asset('converted_images/' . $newFilename);
 
         // Redirect back with the image URL
-        return Redirect::back()->with('imageUrl',
-            $imageUrl
-        );
+        // return Redirect::back()->with('imageUrl',
+        //     $imageUrl
+        // );
     }
 }

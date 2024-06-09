@@ -5,11 +5,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>FreeConverto - Effortless File and Image Conversion Online</title>
+    <meta name="description" content="Welcome to FreeConverto! Easily convert your files and images from one format to another with our free, fast, and user-friendly online tool. Convert documents, images, audio, and video files seamlessly. No downloads or installations required. Discover the simplicity of FreeConverto today!">
+    <meta name="keywords" content="file converter, image converter, online file conversion, free file converter, document converter, audio converter, video converter, convert files online, format conversion, free file conversion tool">
+
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+    <link rel="stylesheet" href="/css/style.css">
+
     @vite('resources/css/app.css')
 </head>
 
@@ -22,34 +29,27 @@
         <!-- Main Content -->
         <main class="flex-1 ">
 
-            <section class="h-96 flex flex-col justify-center items-center">
-                <h1 class="text-4xl ">Upload File</h1>
-                <form action="{{ route('convert-to-apng') }}" method="POST" enctype="multipart/form-data" class="mt-5">
-                    @csrf
-                    <input require="true" class="w-full " name="img" type="file">
+            <section class=" my-5 flex flex-col justify-center items-center">
+                <h1 class="text-3xl font-bold">Upload Images to convert</h1>
 
-                    <select name="format" class="w-full d-block my-5 border py-2 rounded-lg">
-                        <option value="png">PNG</option>
-                        <option value="jpg">JPG</option>
-                        <option value="gif">GIF</option>
-                    </select>
-                    <button type="submit" class="btn bg-blue-500 px-5 py-1 text-white text-xl uppercase rounded-lg mt-6">Convert</button>
-                </form>
-
-
-                @if (session('message'))
-                <div class="alert alert-success bg-green-500 text-white py-1 px-5 rounded-lg mt-5 text-lg capitalize">
-                    {{ session('message') }}
-                </div>
-
-                @endif
-
-                @if(session('imageUrl'))
-                <a class="text-white text-xl mt-5 bg-green-500 rounded-lg p-2" href="{{ session('imageUrl') }}" download>Download Image</a>
-                @endif
 
 
             </section>
+
+            <section class="bg-white p-7 shadow-lg w-1/2 mx-auto min-h-60 rounded-xl ">
+                <form action="{{ route('convert-to-apng') }}" class="dropzone w-full rounded-2xl min-h-60 bg-slate-50 border-2 border-dashed border-gray-300 flex flex-col justify-center items-center" id="myGreatDropzone">
+                    @csrf
+                    <button class="bg-blue-500 block text-white font-medium text-lg py-4 px-12 rounded-md " id="custom-button">
+                        Select Images
+                    </button>
+
+
+                </form>
+            </section>
+            <div class="dz-preview-container w-1/2 min-h-52 mx-auto mt-8" id="dz-preview-container"></div>
+
+            <!-- Feature Cards   -->
+            @include("frontend.partials.feature-cards")
 
         </main>
 
@@ -57,7 +57,8 @@
         @include("frontend.partials.footer")
     </div>
 
-
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 
 </html>
