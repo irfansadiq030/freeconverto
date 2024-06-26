@@ -6,44 +6,56 @@ use Illuminate\Support\Facades\Redirect;
 
 use Illuminate\Http\Request;
 use Image;
+use Illuminate\Support\Facades\Log;
 
 class ImageController extends Controller
 {
     public function convertImage(Request $request)
     {
-        // Validate the incoming request
-        $request->validate([
-            'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-        ]);
+        try {
+            // Validate the incoming request
+            // $request->validate([
+            //     'imgFile' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240', // 10MB max
+            // ]);
 
-        // dd($request);
-
-        // Get the uploaded file
-        $file = $request->file('file');
-
-        // Get the format
-        $format = $request->input('format');
-
-        // configure with favored image driver (gd by default)
-        // Image::configure(['driver' => 'imagick']);
+            // Check if file is uploaded
+            if (!$request->hasFile('imgFile')) {
+                return response()->json([
+                    'message' => 'No file uploaded',
+                ], 400);
+            }
 
 
-        // Read the image from the file
-        $img = Image::make($file);
+            // Get the uploaded file
+            $file = $request->file('imgFile');
 
+            // Get the format
+            // $format = $request->input('format');
+            $format = 'png';
 
-        // Create a new filename with the desired format
-        $newFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME) . '.' . $format;
-        // dd($newFilename);
-        // Convert and save the image in the new format
-        $img->encode($format)->save(public_path('converted_images/' . $newFilename));
+            // Read the image from the file
+            $img = Image::make($file);
 
-        // Generate the URL of the converted image
-        $imageUrl = asset('converted_images/' . $newFilename);
+            // Create a new filename with the desired format
+            $newFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME) . '.'. $format  ;
 
-        // Redirect back with the image URL
-        // return Redirect::back()->with('imageUrl',
-        //     $imageUrl
-        // );
+            // Convert and save the image in the new format
+            $img->encode($format)->save(public_path('converted_images/' . $newFilename));
+
+            // Generate the URL of the converted image
+            $imageUrl = asset('converted_images/' . $newFilename);
+
+            return response()->json([
+                'message' => 'Image converted successfully',
+                'new_image' => $imageUrl
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Image conversion failed: ' . $e->getMessage());
+
+            return response()->json([
+                'message' => $e->getMessage(),
+            ], 500);
+        }
+
     }
 }

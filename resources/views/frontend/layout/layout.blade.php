@@ -46,7 +46,7 @@
 
                 </form>
             </section>
-            <div class="dz-preview-container w-1/2 min-h-52 mx-auto mt-8" id="dz-preview-container"></div>
+            <div class="dz-preview-container w-1/2 h-28 mx-auto mt-8 overflow-y-auto" id="dz-preview-container"></div>
 
             <!-- Feature Cards   -->
             @include("frontend.partials.feature-cards")

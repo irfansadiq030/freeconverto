@@ -18,4 +18,8 @@ Route::get('/', function () {
     return view('frontend.layout.layout');
 });
 
+Route::get('/test', function () {
+    return "Hello";
+});
+
 Route::post('/convert-to-apng', [ImageController::class, 'convertImage'])->name('convert-to-apng');

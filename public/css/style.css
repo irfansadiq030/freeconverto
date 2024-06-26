@@ -1,3 +1,8 @@
+:root {
+    --error-color: #ff3333;
+    --bg-color: #375EF9;
+}
+
 .material-symbols-outlined {
     font-variation-settings:
         'FILL'0,
@@ -22,6 +27,10 @@
     top: 15px;
     right: 15px;
     cursor: pointer;
+}
+
+.cancel_btn:hover {
+    color: var(--error-color);
 }
 
 .upload_progressbar {
