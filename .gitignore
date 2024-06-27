@@ -18,3 +18,33 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+# Ignore error_log files
+app/Console/error_log
+app/Exceptions/error_log
+app/Http/Controllers/error_log
+app/Http/Middleware/error_log
+app/Http/error_log
+app/Models/error_log
+app/Providers/error_log
+
+# Ignore error_log in bootstrap and config directories
+bootstrap/error_log
+config/error_log
+
+# Ignore error_log files in database directory
+database/factories/error_log
+database/migrations/error_log
+database/seeders/error_log
+
+# Ignore general error_log files
+error_log
+
+# Ignore error_log in public and routes directories
+public/error_log
+routes/error_log
+
+# Ignore error_log files in tests directory and subdirectories
+tests/Feature/error_log
+tests/Unit/error_log
+tests/error_log
