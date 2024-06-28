@@ -14,12 +14,22 @@
 .uploaded_container {
     background-color: #EEF1F7;
     position: relative;
+    min-width: 150px !important;
+    max-width: 150px;
+    min-height: 130px;
+    margin-right: 15px;
 }
 
 .uploaded_img {
-    width: 4rem;
+    width: 100%;
     border-radius: 6px;
     overflow: hidden;
+}
+
+.uploaded_img img {
+    height: 80px;
+    width: 100%;
+    object-fit: cover;
 }
 
 .cancel_btn {
@@ -47,4 +57,31 @@
     display: block;
     height: 100%;
     background-color: #375EF9;
+}
+
+.main_img_box {
+    width: 50%;
+    overflow-x: auto;
+    padding-bottom: 20px;
+}
+
+.main_img_box::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.main_img_box::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: #cbd5e0;
+}
+
+/* Handle */
+.main_img_box::-webkit-scrollbar-thumb {
+    background: #a0aec0;
+    border-radius: 100vh;
+}
+
+/* Handle on hover */
+.main_img_box::-webkit-scrollbar-thumb:hover {
+    background: #a0aec0;
 }
