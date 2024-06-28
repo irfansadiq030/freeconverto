@@ -14,9 +14,9 @@ class ImageController extends Controller
     {
         try {
             // Validate the incoming request
-            // $request->validate([
-            //     'imgFile' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240', // 10MB max
-            // ]);
+            $request->validate([
+                'imgFile' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240', // 10MB max
+            ]);
 
             // Check if file is uploaded
             if (!$request->hasFile('imgFile')) {
