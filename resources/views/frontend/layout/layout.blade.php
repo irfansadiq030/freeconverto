@@ -51,8 +51,8 @@
 
                 </form>
             </section>
-            <div class="dz-preview-container w-1/2 overflow-x-scroll pb-5 mx-auto mt-8 flex main_img_box" id="dz-preview-container">
-                <div class="dz-preview dz-file-preview uploaded_container  relative shadow-sm rounded-md p-4">
+            <div class="dz-preview-container w-1/2 overflow-x-autogit pb-5 mx-auto mt-8 flex main_img_box" id="dz-preview-container">
+                {{-- <div class="dz-preview dz-file-preview uploaded_container  relative shadow-sm rounded-md p-4">
                     <div class="flex justify-center">
                         <div class="dz-image uploaded_img rounded-md "><img data-dz-thumbnail
                                 src={{ asset('converted_images/pexels-iriser-673803.png') }} /></div>
@@ -63,7 +63,7 @@
                     <a href="#"
                         class="w-full flex justify-center items-center mt-4 bg-blue-500 rounded-md text-center p-1 text-md font-medium text-white">Download
                     </a>
-                </div>
+                </div> --}}
             </div>
 
             <!-- Feature Cards   -->
