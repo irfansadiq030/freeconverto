@@ -59,12 +59,6 @@
     background-color: #375EF9;
 }
 
-.main_img_box {
-    width: 50%;
-    overflow-x: auto;
-    padding-bottom: 20px;
-}
-
 .main_img_box::-webkit-scrollbar {
     width: 10px;
     height: 10px;
