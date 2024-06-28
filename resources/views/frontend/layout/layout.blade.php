@@ -29,7 +29,7 @@
         <main class="flex-1 ">
 
             <section class=" my-5 flex flex-col justify-center items-center">
-                <h1 class="text-3xl font-bold">Upload Images to convert</h1>
+                <h1 class="text-3xl font-bold">Upload Unlimited Images to convert</h1>
 
 
 
